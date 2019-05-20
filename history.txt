@@ -1,0 +1,322 @@
+    1  ls -la
+    2  apt-get update
+    3  apt-get install csvtool
+    4  csvtool col 11 h1b.csv > zips.csv
+    5* 
+    6  cat zips.csv | tail -n +2 | head
+    7  cat zips.csv | tail -n +2 | sort | uniq -c
+    8  cat zips.csv | tail -n +2 | sort | uniq -c | sort
+    9  cat zips.csv | head
+   10  cat h1b.csv | head
+   11  cat h1b.csv | head | csvtool col 11
+   12  cat h1b.csv | head | csvtool col 11 -
+   13  cat h1b.csv | head | csvtool col 3,4,5,6 -
+   14  cat h1b.csv | head | csvtool col 3,4,5,6,11 - 
+   15  cat h1b.csv | head | csvtool col 3,4,5,6,11 | awk '{$1}' - 
+   16  cat h1b.csv | head | csvtool col 3,4,5,6,11 | awk '{print $1}' - 
+   17  cat h1b.csv | head | csvtool col 3,4,5,6,11 | awk '{print $0}' - 
+   18  cat h1b.csv | head | csvtool col 3,4,5,6,11 | IFS="," awk '{print $0}' - 
+   19  cat h1b.csv | head | csvtool col 3,4,5,6,11 | IFS="," awk '{print $1}' - 
+   20  cat h1b.csv | head | csvtool col 3,4,5,6,11 | awk '{print $1}' - 
+   21  cat h1b.csv | head | csvtool col 3,4,5,6,11 | awk '{print $1}' 
+   22  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print $1}'
+   23  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print $1 + ","}'
+   24  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print $1}'
+   25  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print $1+$1}'
+   26  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print $1+$2+$3+$4}'
+   27  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print $1+$2+$3+$4; print $5}'
+   28  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print $1+$2+$3+$4 "  \t  " $5}'
+   29  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{print ($1+$2+$3+$4) "  \t  " $5}'
+   30  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{FS="," print ($1+$2+$3+$4) "  \t  " $5}'
+   31  cat h1b.csv | head | csvtool col 3,4,5,6,11 - | awk '{FS=","; print ($1+$2+$3+$4) "  \t  " $5}'
+   32  cat h1b.csv | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print ($1+$2+$3+$4) "  \t  " $5}'
+   33  less h1b.csv 
+   34  grep 27601  h1b.csv  | head -1
+   35  cat h1b.csv | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print ($1+$2+$3+$4) "," $5}'
+   36  cat h1b.csv | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   37  cat h1b.csv | tail -n +2 | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   38  cat h1b.csv | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   39  cat h1b.csv | tail -n +2 | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   40  man uniq
+   41  cat h1b.csv | tail -n +2 | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   42  cat h1b.csv | tail -n +2 | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | awk '{a[$1] += $2} END {for (i in a) print i, a[i]}'
+   43  cat h1b.csv | tail -n +2 | head -n 1000 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | awk -F ',' '{a[$1] += $2} END {for (i in a) print i, a[i]}'
+   44  grep 01003 h1b.csv 
+   45  cat h1b.csv | tail -n +2 |  csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$;5D;5D3+$4)}' | sort | awk -F ',' '{a[$1] += $2} END {for (i in a) print i, a[i]}'
+   46  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | awk -F ',' '{a[$1] += $2} END {for (i in a) print i, a[i]}'
+   47  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | awk -F ',' '{a[$1] += $2} END {for (i in a) print i, a[i]}' | grep 01003
+   48  grep 01003 h1b.csv 
+   49  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | awk -F ',' '{a[$1] += $2} END {for (i in a) print i, a[i]}' | grep 98948
+   50  grep 98948 h1b.csv 
+   51  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | awk -F ',' '{a[$1] += $2} END {for (i in a) print i, a[i]}'
+   52  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort 
+   53  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | awk -F, '{a[$1] += $2} END {for (i in a) print i, a[i]}'
+   54  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += $2} END {for (i in a) print i, a[i]}'
+   55  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   56  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += $2} END {for (i in a) print i}'
+   57  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += $2} END {for (i in a) print a}'
+   58  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += $2} END {for (i in a) print a[i]}'
+   59  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += $2} END {for (i in a) print a}'
+   60  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += $2} END {for (i in a) print i}'
+   61  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   62  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += 1} END {for (i in a) print i}'
+   63  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{a[$1] += 1} END {for (i in a) print i, a[i]}'
+   64  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{print $1; a[$1] += 1} END {for (i in a) print i, a[i]}'
+   65  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{lines[$1] += $2} END {for (i in lines) print i, a[i]}'
+   66  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," awk -F, '{lines[$1] += $2} END {for (i in lines) print i, a[i]}'  FS="'"
+   67  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," FS="'" awk -F, '{lines[$1] += $2} END {for (i in lines) print i, a[i]}' 
+   68  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="," FS="'" awk -F, '{lines[$1] += $2} END {for (i in lines) print i, a[i]}' FS="'"
+   69  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="'" FS="'" awk -F, '{lines[$1] += $2} END {for (i in lines) print i, a[i]}' FS="'"
+   70  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort
+   71  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort 
+   72  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort 
+   73  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 "," ($1+$2+$3+$4)}' | sort | IFS="'" FS="'" awk -F, '{lines[$1] += $2} END {for (i in lines) print i, a[i]}' FS="'"
+   74  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | awk '{lines[$1] += $2} END {for (i in lines) print i, a[i]}'
+   75  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS="\n" awk '{lines[$1] += $2} END {for (i in lines) print i, a[i]}'
+   76  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS="\n" awk '{lines[$1] += $2} END {for (i in lines) print i, a[i]}' FS="'"
+   77  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS=" " awk '{lines[$1] += $2} END {for (i in lines) print i, a[i]}' FS="'"
+   78  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS=" " awk '{print $1 " " $2'
+   79  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS=" " awk '{print $1 " " $2}'
+   80  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS=" " awk '{lines[$1] += $2} END {for (i in lines) print i}'
+   81  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS=" " awk '{print $1; lines[$1] += $2} END {for (i in lines) print i}'
+   82  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort | IFS=" " awk '{print $1; if (! $1 in lines) lines[$1] = $2 else lines[$1] += $2} END {for (i in lines) print i}'
+   83  cat h1b.csv | tail -n +2 | csvtool col 3,4,5,6,11 - | awk '{FS=","; print $5 " " ($1+$2+$3+$4)}' | sort
+   84  cat h1b.csv | tail -n +2 | head
+   85  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)".*/\1/'
+   86  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)".*/\1/g'
+   87  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)?".*/\1/g'
+   88  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*?)".*/\1/g'
+   89  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"$/\1/g'
+   90  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"$/\1/g'
+   91  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)".*$/\1/g'
+   92  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/\1/g'
+   93  cat h1b.csv | tail -n +2 | head
+   94  cat h1b.csv | head
+   95  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1/g'
+   96  cat h1b.csv | head
+   97  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": \8, "state": "\9", "city": "\10", "zip": \11/g'
+   98  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": \8, "state": "\9", "city": "\10", "zip": \11}/g'
+   99  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": \8, "state": "\9", "city": "\10", "zip": \11}/g' > output.json
+  100  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": \8, "state": "\9", "city": "\10", "zip": \11},/g' > output.json
+  101  vi output.json 
+  102  echo "[ " > output.json 
+  103  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": \8, "state": "\9", "city": "\10", "zip": \11},/g' > output.json
+  104  echo "[ " > output.json 
+  105  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": \8, "state": "\9", "city": "\10", "zip": \11},/g' >> output.json
+  106  echo "] " > output.json 
+  107  apt-get install jq
+  108  jq '.' output.json 
+  109  vi output.json 
+  110  head output.json 
+  111  echo "[ " > output.json 
+  112  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": \8, "state": "\9", "city": "\10", "zip": \11},/g' >> output.json
+  113  echo "] " >> output.json 
+  114  head output.json 
+  115  jq '.' output.json 
+  116  echo "[ " > output.json 
+  117  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": \1, "company": "\2", "ia": \3, "ir": \4, "ca": \5, "cr": \6, "code": \7, "taxid": "\8", "state": "\9", "city": "\10", "zip": \11},/g' >> output.json
+  118  echo "] " >> output.json 
+  119  jq '.' output.json 
+  120  apt-get install vim
+  121  vi +1010 output.json 
+  122  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": "\1", "company": "\2", "ia": "\3", "ir": "\4", "ca": "\5", "cr": "\6", "code": "\7", "taxid": "\8", "state": "\9", "city": "\10", "zip": "\11"},/g' >> output.json
+  123  echo "[ " > output.json 
+  124  cat h1b.csv | tail -n +2 | sed -E 's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": "\1", "company": "\2", "ia": "\3", "ir": "\4", "ca": "\5", "cr": "\6", "code": "\7", "taxid": "\8", "state": "\9", "city": "\10", "zip": "\11"},/g' >> output.json
+  125  vi output.json 
+  126  jq '.' output.json 
+  127  vi output.json 
+  128  vi +101689 output.json 
+  129  jq '.' output.json 
+  130  vi +101689 output.json 
+  131  vi +136949 output.json 
+  132  jq '.' output.json 
+  133  vi +186315 output.json 
+  134  jq '.' output.json 
+  135  vi +289371 output.json 
+  136  jq '.' output.json 
+  137  vi +290831 output.json 
+  138  jq '.' output.json 
+  139  vi +292981 output.json 
+  140  jq '.' output.json 
+  141  vi +305076 output.json 
+  142  jq '.' output.json 
+  143  vi +331499 output.json 
+  144  jq '.' output.json 
+  145  vi +345296 output.json 
+  146  jq '.' output.json 
+  147  vi +345651 output.json 
+  148  jq '.' output.json 
+  149  vi +346255 output.json 
+  150  jq '.' output.json 
+  151  vi +347396 output.json 
+  152  jq '.' output.json 
+  153  vi +399154 output.json 
+  154  jq '.' output.json 
+  155  vi +450799 output.json 
+  156  jq '.' output.json 
+  157  vi +461381 output.json 
+  158  jq '.' output.json 
+  159  vi +467407 output.json 
+  160  jq '.' output.json 
+  161  vi +481090 output.json 
+  162  jq '.' output.json 
+  163  vi +500809 output.json 
+  164  jq '.' output.json 
+  165  vi +504304 output.json 
+  166  jq '.' output.json 
+  167  vi +557011 output.json 
+  168  jq '.' output.json 
+  169  vi +574478 output.json 
+  170  jq '.' output.json 
+  171  jq '. | map(.total=.ia|tonumber + .ir|tonumber | .ca|tonumber + .cr|tonumber) ' output.json 
+  172  vi +585746 output.json 
+  173  jq '. | map(.total=3) ' output.json 
+  174  jq '. | map(.total=.ia|tonumber) ' output.json 
+  175  vi output.json 
+  176  jq '. | map(try .total=(.ia|tonumber) ' output.json 
+  177  jq '. | map(try .total=.ia|tonumber' output.json 
+  178  jq '. | map(try .total=.ia|tonumber catch ""' output.json 
+  179  jq '. | try map(.total=.ia|tonumber) catch ""' output.json 
+  180  jq '. | map(try .total=.ia|tonumber catch "") ' output.json 
+  181  jq '. | map(.total=(try .ia|tonumber catch ""))' output.json 
+  182  jq '. | map(.total=.ia|tonumber rescue 0)' output.json 
+  183  jq '. | map(.total=.ia|tonumber)' output.json 
+  184  jq '. | map(try .ia|tonumber catch empty)' output.json 
+  185  jq '. | map(.val = try .ia|tonumber catch empty)' output.json 
+  186  jq '. | map(.val = .ia|tonumber)' output.json 
+  187  jq '. | map(.val = .ir|tonumber)' output.json 
+  188  jq '. | map(.val = 3)' output.json 
+  189  jq '. | map(.val = .ia)' output.json 
+  190  jq '. | select(try .ia | tonumber)' output.json 
+  191  jq '. | select(try (.ia | tonumber))' output.json 
+  192  jq '. | select(try (.ia | tonumber) >=0)' output.json 
+  193  jq '. | select(try (.ia | tonumber >=0))' output.json 
+  194  jq 'def num(x): try x | tonumber  catch if "NaN" then 0  else x | tonumber end; . | map(.val=num(.ia))' output.json 
+  195  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.val=num(.ia))' output.json 
+  196  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)) | map (.pir=num(.ir)) | map(.pca=num(.ca)) | map(.pcr=num(.cr))' output.json 
+  197  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr))' output.json 
+  198  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr)' output.json 
+  199  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) ' output.json 
+  200  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, total: map(.value) |add} ' output.json 
+  201  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, total: map(.value) |add})' output.json 
+  202  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, total: map(.total) |add})' output.json 
+  203* jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr)' output2.json 
+  204  vi output.json 
+  205  apt-get install perl
+  206  cat h1b.csv | tail -n +2 | perl -pe  's/^"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"/{"year": "$1", "company": "$2", "ia": "$3", "ir": "$4", "ca": "$5", "cr": "$6", "code": "$7", "taxid": "$8", "state": "$9", "city": "$10", "zip": "$11"},/g' >> output2.json
+  207  vi output2.json 
+  208  jq '.' output2.json 
+  209  vi output2.json 
+  210  jq '.' output2.json 
+  211  vi +101689 output2.json
+  212  jq '.' output2.json 
+  213  vi +136949 output2.json
+  214  jq '.' output2.json 
+  215  vi +289371 output2.json
+  216  jq '.' output2.json 
+  217  vi +290831 output2.json
+  218  jq '.' output2.json 
+  219  vi +310483 output2.json
+  220  jq '.' output2.json 
+  221  vi +504304 output2.json
+  222  jq '.' output2.json 
+  223  vi +574478 output2.json
+  224  jq '.' output2.json 
+  225  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, total: map(.total) |add})' output2.json 
+  226  less zips
+  227  apt-get install zips
+  228  apt-get install less
+  229  less zips
+  230  jq '.' zip
+  231  jq '.' zips
+  232  head zips
+  233  head zips | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3}'
+  234  head zips | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3}/'
+  235  head zips | tail -n +2 | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3}/'
+  236  head zips | tail -n +2 | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3}/' | jq '.'
+  237  head zips | tail -n +2 | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3}/' | jq -R '.'
+  238  head zips | tail -n +2 | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3}/' | jq --slurp '.'
+  239  man jq
+  240  jq --help
+  241  head zips | tail -n +2 | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3}/' 
+  242  cat zips|  tail -n +2 | sed -E 's/(.*),(.*),(.*)/{zip:"\1", lat: \2, lng: \3},/' >  zips.json
+  243  vi zips.json 
+  244  jq '.' zips.json 
+  245  vi zips.json 
+  246  cat zips|  tail -n +2 | sed -E 's/(.*),(.*),(.*)/{"zip":"\1", "lat": \2, "lng": \3},/' >  zips.json
+  247  vi zips.json 
+  248  jq '.' zips.json 
+  249  jq '. | map("elif $zip == .zip then .lat"' zips.json 
+  250  jq '. | map("elif $zip == " + .zip + " then " + .lat)' zips.json 
+  251  jq '. | map("elif $zip == " + .zip|tostring + " then " + .lat|tostring)' zips.json 
+  252  jq '. | map("elif $zip == " + .zip|tostring + " then " + (.lat|tostring))' zips.json 
+  253  jq '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json 
+  254  jq '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json --help
+  255  jq '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json -r
+  256  jq -r '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json
+  257  jq -r '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json | echo
+  258  jq '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json | echo
+  259  jq '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json | cat -
+  260  jq -r '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring))' zips.json | cat -
+  261  jq -r '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring)) | .[]' zips.json | cat -
+  262  jq -r '. | map("elif $zip == " + (.zip|tostring) + " then " + (.lat|tostring)) | .[]' zips.json > lat.jq
+  263  vi lat.jq 
+  264  jq -r '. | map("elif $zip == \"" + (.zip|tostring) + "\" then " + (.lat|tostring)) | .[]' zips.json > lat.jq
+  265  vi lat.jq 
+  266  jq -r '. | map("elif $zip == \"" + (.zip|tostring) + "\" then " + (.lng|tostring)) | .[]' zips.json > lng.jq
+  267  vi lat.jq lng.jq 
+  268  jq 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, total: map(.total) |add})' output2.json 
+  269  jq 'include lat; include lng; def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json 
+  270  jq 'include "lat"; include "lng"; def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json 
+  271  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  272  jq --slurp 'def lng(x): x; def lat(x): x; def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; . | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  273  jq --slurp 'def lng(x): x; def lat(x): x; def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; zips as $zips | data as $data | $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  274  jq --slurp 'def lng(x): x; def lat(x): x; def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  275  jq --slurp 'def lng(x): x; def lat(x): x; def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  276  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(x): x; def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  277  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips | select(.zip==zip) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  278  head zips.json 
+  279  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips | select(.zip==zip) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  280  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips[] | select(.zip==zip) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  281  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips[] | select(.zip==zip) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  282  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips | map(select(.zip==zip)) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  283  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips | map(select(.zip==zip)) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  284  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips[] | map(select(.zip==zip)) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  285  jq '.  | map(select(.zip=="95051")) | map(.lng)' zips.json
+  286  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips[] | map(select(.zip==zip)) | map(.lng); def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  287  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips | map(select(.zip==zip)) | map(.lng) | .[0]; def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  288  jq --slurp '.[1] as $zips | .[0] as $data | def lng(zip): $zips | map(select(.zip==zip)) | map(.lng) | .[0]; lng("95051")' output2.json zips.json 
+  289  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips | map(select(.zip==zip)) | map(.lng) | .[0]; def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: 3, lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  290  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng(zip): $zips | map(select(.zip==zip)) | map(.lng) | .[0]; def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: 3, total: map(.total) |add})' output2.json zips.json 
+  291  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng($zip): $zips | map(select(.zip==$zip)) | map(.lng) | .[0]; def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  292  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng($zip): $zips | map(select(.zip==$zip)) | map(.lng) | .[0]; def lat(x): x; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json 
+  293  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng($zip): $zips | map(select(.zip==$zip)) | map(.lng) | .[0]; def lat($zip): $zips | map(select(.zip==$zip)) | map(.lag) | .[0]; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json > output3.json
+  294  cp output2.json output2_small.json 
+  295  vi output2_small.json
+  296  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng($zip): $zips | map(select(.zip==$zip)) | map(.lng) | .[0]; def lat($zip): $zips | map(select(.zip==$zip)) | map(.lag) | .[0]; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2_small.json zips.json > output3_small.json
+  297  vi output2_small.json 
+  298  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng($zip): $zips | map(select(.zip==$zip)) | map(.lng) | .[0]; def lat($zip): $zips | map(select(.zip==$zip)) | map(.lag) | .[0]; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2_small.json zips.json > output3_small.json
+  299  less output3_small.json
+  300  cat zips.json 
+  301  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng($zip): $zips | map(select(.zip==$zip)) | map(.lng) | .[0]; def lat($zip): $zips | map(select(.zip==$zip)) | map(.lat) | .[0]; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2_small.json zips.json > output3_small.json
+  302  less output3_small.json 
+  303  jq '.' output3_small.json 
+  304  jq '"{\"type\":\"Feature\",\"properties\":{\"mag\":" + .total + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + .lat + "," + .lng + "]}},' output3_small.json 
+  305  jq '"{\"type\":\"Feature\",\"properties\":{\"mag\":" + .total + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + .lat + "," + .lng + "]}},"' output3_small.json 
+  306  jq '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + .total + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + .lat + "," + .lng + "]}},")' output3_small.json 
+  307  jq '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + .total + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lat | tostring) + "," + (.lng | tostring) + "]}},")' output3_small.json 
+  308  jq '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lat | tostring) + "," + (.lng | tostring) + "]}},")' output3_small.json 
+  309  jq '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lat | tostring) + "," + (.lng | tostring) + "]}},")' output3_small.json  | grep -v null
+  310  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lat | tostring) + "," + (.lng | tostring) + "]}},")' output3_small.json  | grep -v null
+  311  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lat | tostring) + "," + (.lng | tostring) + "]}},") | .[]' output3_small.json  | grep -v null
+  312  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lng | tostring) + "," + (.lat | tostring) + "]}},") | .[]' output3_small.json  | grep -v null
+  313  jq --slurp 'def tonum(x): x | tonumber; def num(x): try tonum(x) catch if "NaN" then 0  else x | tonumber end; .[1] as $zips | .[0] as $data | def lng($zip): $zips | map(select(.zip==$zip)) | map(.lng) | .[0]; def lat($zip): $zips | map(select(.zip==$zip)) | map(.lat) | .[0]; $data | map(.pia=num(.ia)|.pir=num(.ir)|.pca=num(.ca)|.pcr=num(.cr)|.total=.pia+.pir+.pca+.pcr) | group_by(.zip) | map ({zip: .[0].zip, lat: lat(.[0].zip), lng: lng(.[0].zip), total: map(.total) |add})' output2.json zips.json > output3.json
+  314  wc -l output3.json 
+  315  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lng | tostring) + "," + (.lat | tostring) + "]}},") | .[]' output3.json  | grep -v null
+  316  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lng | tostring) + "," + (.lat | tostring) + "]}},") | .[]' output3.json  | grep -v null > output3_goog.json 
+  317  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"zip\": \" + (.zip) + "\", \"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lng | tostring) + "," + (.lat | tostring) + "]}},") | .[]' output3.json  | grep -v null > output3_goog.json 
+  318  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"zip\": " + (.zip |tostring) + "\", \"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lng | tostring) + "," + (.lat | tostring) + "]}},") | .[]' output3.json  | grep -v null > output3_goog.json 
+  319  less output3_goog.json 
+  320  jq -r '. | map("{\"type\":\"Feature\",\"properties\":{\"zip\": \"" + (.zip |tostring) + "\", \"mag\":" + (.total | tostring) + "},\"geometry\":{\"type\":\"Point\",\"coordinates\":[" + (.lng | tostring) + "," + (.lat | tostring) + "]}},") | .[]' output3.json  | grep -v null > output3_goog.json 
+  321  history
+  322  history > history.txt
